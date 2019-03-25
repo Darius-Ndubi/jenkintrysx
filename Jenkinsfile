@@ -1,10 +1,12 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'rackspacedot/python37'}
+  }
+
   stages {
     stage('Create a virtual environment') {
       steps {
         echo 'Create the virtual environment'
-        sh 'sudo apt-get install python3'
         sh 'python3 -m virtualenv env'
         sh 'source /env/bin/activate'
         sh 'pip3 install -r requirements.txt'
