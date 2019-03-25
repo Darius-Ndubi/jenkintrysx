@@ -1,18 +1,18 @@
 pipeline {
     agent any
     stages {
-        stage('Install dependancies') {
+        stage('Install') {
             steps {
                 sh "echo 'Install dependancies'"
             }
             }
         }
-        stage('Run tests') {
+        stage('Run_tests') {
             steps {
                 sh "echo 'TEsts passed'"
             }
         }
-        stage ('Build the application') {
+        stage ('Build') {
             steps {
                 sh "echo 'Built'"
             }
