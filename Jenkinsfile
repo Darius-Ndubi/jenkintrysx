@@ -14,17 +14,20 @@ pipeline {
         sh 'nosetests  --with-coverage --cover-package=resources'
       }
     }
-    stage('Deployment to heroku') {
-      steps {
-        echo 'Deployed'
-        parallel {
+    stage('Deployments') {
+      parallel {
         stage('Push to Docker') {
           steps {
             echo 'Image updated!'
           }
         }
-      }
+
+        stage('Deploy to heroku') {
+          steps {
+            echo 'Deployed!'
+          }
+        }
       }
     }
+    }
   }
-}
