@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Install dependancies') {
+            steps {
+                sh "echo 'Install dependancies'"
+            }
+            }
+        }
+        stage('Run tests') {
+            steps {
+                sh "echo 'TEsts passed'"
+            }
+        }
+        stage ('Build the application') {
+            steps {
+                sh "echo 'Built'"
+            }
+        }
+    }
+}
