@@ -4,8 +4,8 @@ pipeline {
     stage('Create a virtual environment') {
       steps {
         echo 'Create the virtual environment'
-        sh 'python -m virtualenv env'
-        sh 'source /env/bin/activate'
+        sh 'virtualenv env'
+        sh 'source env/bin/activate'
         sh 'pip3 install -r requirements.txt'
       }
     }
