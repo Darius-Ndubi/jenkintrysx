@@ -3,18 +3,18 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh "echo 'Install dependancies'"
+                echo 'Install dependancies'
             }
             }
         }
         stage('Run_tests') {
             steps {
-                sh "echo 'TEsts passed'"
+                echo 'TEsts passed'
             }
         }
         stage ('Build') {
             steps {
-                sh "echo 'Built'"
+                echo 'Built'
             }
         }
     }
