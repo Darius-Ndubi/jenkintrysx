@@ -1,19 +1,29 @@
 pipeline {
   agent any
   stages {
-    stage('Install') {
+    stage('Create a virtual environment') {
       steps {
-          echo 'Install dependancies'
+        echo 'Create the virtual environment'
+        sh 'python3 -m virtualenv env'
+        sh 'source /env/bin/activate'
+        sh 'pip3 install -r requirements.txt'
       }
     }
     stage('Run_tests') {
       steps {
-          echo 'TEsts passed'
+        sh 'nosetests  --with-coverage --cover-package=resources'
       }
     }
-    stage('Build') {
+    stage('Deployment to heroku') {
       steps {
-          echo 'Built'
+        echo 'Deployed'
+      }
+      parallel {
+        stage('Push to Docker') {
+          steps {
+        echo 'Image updated!'
+          }
+        }
       }
     }
   }
