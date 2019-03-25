@@ -1,12 +1,13 @@
 pipeline {
-  agent {
-    docker{
-  		image 'python:3.5.7-alpine3.8'
-  		args '-u 0:0'
-  	}
-  }
+  agent none
   stages {
     stage('Create a virtual environment') {
+      agent {
+        docker{
+          image 'python:3.5.7-alpine3.8'
+          args '-u 0:0'
+        }
+      }
       steps {
         echo 'Create the virtual environment'
         sh 'pip3 install virtualenv'
