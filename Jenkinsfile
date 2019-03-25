@@ -4,7 +4,7 @@ pipeline {
     stage('Create a virtual environment') {
       steps {
         echo 'Create the virtual environment'
-        sh 'apt-get install python3'
+        sh 'sudo apt-get install python3'
         sh 'pip3 install virtualenv'
         sh 'virtualenv env'
         sh 'source /env/bin/activate'
