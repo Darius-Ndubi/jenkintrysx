@@ -1,13 +1,17 @@
 pipeline {
-  agent any
+  agent {
+    docker{
+  		image 'python:3.5.7-alpine3.8'
+  		args '-u 0:0'
+  	}
+  }
   stages {
     stage('Create a virtual environment') {
       steps {
         echo 'Create the virtual environment'
-        sh 'brew install python3'
         sh 'pip3 install virtualenv'
         sh 'virtualenv env'
-        sh 'source /env/bin/activate'
+        sh 'source env/bin/activate'
         sh 'pip3 install -r requirements.txt'
       }
     }
