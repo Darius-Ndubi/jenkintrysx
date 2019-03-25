@@ -17,13 +17,13 @@ pipeline {
     stage('Deployment to heroku') {
       steps {
         echo 'Deployed'
-      }
-      parallel {
+        parallel {
         stage('Push to Docker') {
           steps {
-        echo 'Image updated!'
+            echo 'Image updated!'
           }
         }
+      }
       }
     }
   }
