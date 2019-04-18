@@ -1,31 +1,11 @@
 pipeline {
   agent {
-    kubernetes {
-      label 'jenkins-trx'
-      defaultContainer 'jnlp'
-      yaml """
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-  component: ci
-spec:
-  containers:
-  - name: kubepod
-    image: python:3.5.7-alpine3.8
-    resources:
-      requests:
-        cpu: "500m"
-        memory: "1Gi"
-      limits:
-        cpu: "800m"
-        memory: "2Gi"
-    command:
-    - cat
-    tty: true
-"""
+    docker {
+    image 'python:3.5.7-alpine3.8'
+    args '-p 8081:8080'
     }
   }
+
   stages {
     stage('Create a virtual environment') {
       steps {
